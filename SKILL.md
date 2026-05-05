@@ -21,7 +21,34 @@ Fetch tweets from X/Twitter without authentication. Supports tweet content, repl
 | User timeline | `--user <username> --limit 300` | **Camofox** |
 | Chinese platforms | `fetch_china.py --url <url>` | **Camofox** (except WeChat) |
 | Google search | `camofox_search("query")` | **Camofox** |
+| **Batch Export** | `scripts/fetch_batch.py --user/--query` | **Camofox** |
 | **X-Tracker** (growth) | `tweet_growth_cli.py --add/--run/--report` | None (zero deps) |
+
+---
+
+## Batch Archive & Export (New)
+
+Archive any user's timeline or search results day-by-day. Supports high-reliability pagination and optional Markdown export.
+
+```bash
+# Archive a user's entire timeline (day-by-day)
+python3 scripts/fetch_batch.py --user USERNAME --start 2024-01-01
+
+# Archive a search query (e.g. all tweets about #AI)
+python3 scripts/fetch_batch.py --query "#AI" --start 2024-01-01
+
+# Archive AND export to Obsidian-ready Markdown
+python3 scripts/fetch_batch.py --user USERNAME --markdown --output ./archive/
+```
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Target username (without @) |
+| `--query` | Custom search query (overrides --user) |
+| `--start` | Start date (YYYY-MM-DD), default 2021-01-01 |
+| `--end` | End date (YYYY-MM-DD), default today |
+| `--markdown`| Convert results to Obsidian Markdown automatically |
+| `--output` | Root directory for JSON/Markdown results |
 
 ---
 
